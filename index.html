@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>事件捕獲監聽介紹</title>
+	<style type="text/css">
+		#box{
+			width:200px;
+			height:200px;
+			background-color:red;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+	<img src="images/bubble01.png" alt="" style="width:600px;height:600px;">
+	<img src="images/bubble02.png" alt="">
+	<script type="text/javascript">
+		
+	//事件捕獲監聽：有不太具體的節點更早的接收事件，而最具體的節點應在最後接收事件。
+
+	var box = document.getElementById('box');
+			box.addEventListener('click',function (){
+				box.innerHTML += 'box\n';
+			},true);
+			document.body.addEventListener('click',function (){
+				box.innerHTML += 'body\n';
+			},true);
+			document.documentElement.addEventListener('click',function (){
+				box.innerHTML += 'html\n';
+			},true);
+			document.addEventListener('click',function (){
+				box.innerHTML += 'document\n';
+			},true);
+			window.addEventListener('click',function (){
+				box.innerHTML += 'window\n';
+			},true);
+			
+			box.addEventListener('click',function (){
+				box.innerHTML += 'box\n';
+			},false);
+			document.body.addEventListener('click',function (){
+				box.innerHTML += 'body\n';
+			},false);
+			document.documentElement.addEventListener('click',function (){
+				box.innerHTML += 'html\n';
+			},false);
+			document.addEventListener('click',function (){
+				box.innerHTML += 'document\n';
+			},false);
+			window.addEventListener('click',function (){
+				box.innerHTML += 'window\n';
+			},false);
+
+	// 事件流: 事件捕獲階段,位於目標階段，事件冒泡階段
+	
+
+	</script>
+</body>
+</html>
